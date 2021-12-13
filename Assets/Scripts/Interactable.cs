@@ -27,6 +27,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        print("Interacting...");
+        print("Player interacting with " + gameObject.name);
     }
 }
