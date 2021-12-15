@@ -3,7 +3,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool inInteractionRange;
-    private void Update()
+    public virtual void Update()
     {
         if(Input.GetButtonDown("Action1") && inInteractionRange) {
             Interact();
@@ -12,14 +12,14 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "InteractionRange")
+        if (collision.CompareTag("InteractionRange"))
         {
             inInteractionRange = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "InteractionRange")
+        if (collision.CompareTag("InteractionRange"))
         {
             inInteractionRange = false;
         }

@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class KajakEnterLeave : Interactable
 {
-    [SerializeField] GameObject player;
+    [SerializeField] SpriteRenderer playerSpriteRenderer;
     public bool playerInKajak = false;
+
+
+    public override void Update()
+    {
+        if (Input.GetButtonDown("Action1") && inInteractionRange)
+        {
+            Interact();
+        }
+        else if (Input.GetButtonDown("Action1") && playerInKajak)
+        {
+            KajakExit();
+            print("BRXXIIIIIIIIIIIT");
+        }
+    }
 
     public override void Interact()
     {
@@ -16,12 +30,14 @@ public class KajakEnterLeave : Interactable
 
     public void KajakEnter()
     {
-        player.SetActive(false);
+        playerSpriteRenderer.enabled = false;
+        playerInKajak = true;
     }
 
     public void KajakExit()
     {
-        player.SetActive(true);
+        playerSpriteRenderer.enabled = true;
+        playerInKajak = false;
     }
 
 
