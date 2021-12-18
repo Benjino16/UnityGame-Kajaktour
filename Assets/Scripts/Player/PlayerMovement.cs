@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [SerializeField] public bool canMove = true;
+
+
     [SerializeField] float movementSpeed = 10;
-
-
     [SerializeField] Animator animator;
 
     [Header("Interacteble Transform")]
@@ -24,13 +26,20 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (canMove)
+        {
 
-        RunAnimation();
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        TransformInteraceble();
+            RunAnimation();
 
+            TransformInteraceble();
+
+        } else
+        {
+            movement.Set(0f, 0f);
+        }
     }
 
     private void FixedUpdate()

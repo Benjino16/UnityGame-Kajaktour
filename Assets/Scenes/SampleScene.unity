@@ -2000,12 +2000,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.84000003, z: -10}
+  m_LocalPosition: {x: -0.04, y: -0.120000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1167799268}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &519420033
 SpriteRenderer:
@@ -89286,6 +89286,7 @@ GameObject:
   - component: {fileID: 1167799272}
   - component: {fileID: 1167799273}
   - component: {fileID: 1167799269}
+  - component: {fileID: 1167799274}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -89358,7 +89359,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1773417824}
-  - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89374,6 +89374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2c22356c532c4fb089de698c29765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   movementSpeed: 5
   animator: {fileID: 1167799271}
   interacebleArea: {fileID: 1773417824}
@@ -89451,6 +89452,20 @@ MonoBehaviour:
   secondItem: {fileID: 11400000, guid: 7a52856a62e92c245b38645f6799d671, type: 2}
   thirdItem: {fileID: 11400000, guid: 2fd69105f6e591741ac2d18dd3d7aa1c, type: 2}
   hotbarUI: {fileID: 401357639}
+--- !u!114 &1167799274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167799266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abbf496e933f4f4c8edc0e44ec3fbdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inBoat: 0
+  energy: 0
 --- !u!1 &1174503168
 GameObject:
   m_ObjectHideFlags: 0
@@ -89573,6 +89588,7 @@ GameObject:
   - component: {fileID: 1452387371}
   - component: {fileID: 1452387374}
   - component: {fileID: 1452387375}
+  - component: {fileID: 1452387376}
   m_Layer: 4
   m_Name: Kajak
   m_TagString: Untagged
@@ -89594,7 +89610,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -89660,14 +89676,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452387370}
-  m_LocalRotation: {x: -0, y: -0, z: -0.01448806, w: 0.99989504}
-  m_LocalPosition: {x: -3.95, y: -0.51, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.014123531, w: -0.99990034}
+  m_LocalPosition: {x: -4.52, y: -0.9, z: 0}
+  m_LocalScale: {x: 1.9116199, y: 2.151821, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.66}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.618}
 --- !u!70 &1452387374
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -89697,8 +89713,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inInteractionRange: 0
-  playerSpriteRenderer: {fileID: 1167799267}
-  playerInKajak: 0
+  player: {fileID: 1167799266}
+--- !u!114 &1452387376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452387370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d490e68b315a0248a3d29f7bf1a9de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatSpeed: 15
+  turnSpeed: 30
+  keepSpeed: 0.00005
+  liniearDrag: 1
+  rb: {fileID: 0}
+  playerStats: {fileID: 1167799274}
 --- !u!1 &1487423190
 GameObject:
   m_ObjectHideFlags: 0
