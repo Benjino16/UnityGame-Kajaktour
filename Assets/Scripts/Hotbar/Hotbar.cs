@@ -13,9 +13,6 @@ public class Hotbar : MonoBehaviour
     [SerializeField] HotbarUI hotbarUI;
     private Item temporaryItem;
 
-
-    UnityEvent UpdateUIEvent = new UnityEvent();
-
     private void Update()
     {
         if(Input.GetButtonDown("Hotbar1"))
@@ -41,4 +38,29 @@ public class Hotbar : MonoBehaviour
         }
     }
 
+
+    public bool AddItem(Item item)
+    {
+        Debug.Log("Tred to add an item to the hotbar!");
+        if (!activeItem)
+        {
+            activeItem = item;
+            hotbarUI.UpdateHotbar();
+            return true;
+        }
+        else if (!secondItem)
+        {
+            secondItem = item;
+            hotbarUI.UpdateHotbar();
+            return true;
+        }
+        else if (!thirdItem)
+        {
+            thirdItem = item;
+            hotbarUI.UpdateHotbar();
+            return true;
+        }
+        hotbarUI.UpdateHotbar();
+        return false;
+    } 
 }

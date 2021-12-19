@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] public bool canMove = true;
+    [SerializeField] public bool movementActive = true;
 
 
     [SerializeField] float movementSpeed = 10;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (canMove)
+        if (movementActive)
         {
 
             movement.x = Input.GetAxisRaw("Horizontal");
@@ -36,9 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
             TransformInteraceble();
 
-        } else
-        {
-            movement.Set(0f, 0f);
         }
     }
 
@@ -76,4 +73,14 @@ public class PlayerMovement : MonoBehaviour
         interacebleArea.transform.position = lastPosition * interactebleRangeTransform + rigedbody.position; //MUSS NOCHMAL ÜBERARBEITET WERDEN (VARIABLEN ZUM ANPASSEN ERSTELLEN)
     }
 
+
+    public void canMove(bool status)
+    {
+        movementActive = status;
+        if (!status)
+        {
+            movement.Set(0, 0);
+            animator.SetFloat("Speed", 0);
+        }
+    }
 }

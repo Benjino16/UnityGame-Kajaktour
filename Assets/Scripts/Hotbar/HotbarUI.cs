@@ -20,8 +20,41 @@ public class HotbarUI : MonoBehaviour
 
     public void UpdateHotbar()
     {
-        activeItemIcon.sprite = hotbar.activeItem.icon;
-        secondItemIcon.sprite = hotbar.secondItem.icon;
-        thirdItemIcon.sprite = hotbar.thirdItem.icon;
+        print("Updating hotbarUI!");
+        if(hotbar.activeItem)
+        {
+            activeItemIcon.sprite = hotbar.activeItem.icon;
+            activeItemIcon.enabled = true;
+        }
+        else
+        {
+            activeItemIcon.sprite = null;
+            activeItemIcon.enabled = false;
+        }
+
+
+        if (hotbar.secondItem)
+        {
+            secondItemIcon.sprite = hotbar.secondItem.icon;
+            secondItemIcon.enabled = true;
+        }
+        else
+        {
+            secondItemIcon.sprite = null;
+            secondItemIcon.enabled = false;
+        }
+
+
+        if (hotbar.thirdItem)
+        {
+            thirdItemIcon.sprite = hotbar.thirdItem.icon;
+            thirdItemIcon.enabled = true;
+        }
+        else
+        {
+            thirdItemIcon.sprite = null;
+            thirdItemIcon.enabled = false;
+        }
+
     }
 }

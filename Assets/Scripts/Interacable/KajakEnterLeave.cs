@@ -44,7 +44,7 @@ public class KajakEnterLeave : Interactable
     {
         playerSpriteRenderer.enabled = false;
         playerStats.inBoat = true;
-        playerMovement.canMove = false;
+        playerMovement.movementActive = false;
         player.transform.parent = gameObject.transform;
         playerRigendbody.simulated = false;
     }
@@ -53,7 +53,7 @@ public class KajakEnterLeave : Interactable
     {
         playerSpriteRenderer.enabled = true;
         playerStats.inBoat = false;
-        playerMovement.canMove = true;
+        playerMovement.movementActive = true;
         player.transform.parent = null;
         playerRigendbody.simulated = true;
     }
