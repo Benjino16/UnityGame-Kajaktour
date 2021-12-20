@@ -14,7 +14,7 @@ public class BoatMovement : MonoBehaviour
     [Header("Other Components:")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private PlayerStats playerStats;
-
+    
 
     private Vector2 boatMovement;
 

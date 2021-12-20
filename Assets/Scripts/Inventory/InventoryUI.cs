@@ -24,6 +24,8 @@ public class InventoryUI : MonoBehaviour
     {
 
         //Opens/Closes the inventory if the player press the "Inventory" button
+        //LATER THE PLAYER CAN ONLY OPEN THE INVENTORY IN THE NEAR OF THE BOAT
+        //(THE INVENTORY IS THE INVENTORY OF THE BOAT)
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
