@@ -12,6 +12,14 @@ public class InventoryUI : MonoBehaviour
 
     InventorySlot[] slots;
 
+
+
+    public delegate void OnInventoryOpen();
+    public OnInventoryOpen OnInventoryOpenCallback;
+
+    public delegate void OnInventoryClose();
+    public OnInventoryClose OnInventoryCloseCallback;
+
     private void Awake()
     {
         inventory.OnItemChangedCallback += UpdateUI;                        //Subscribe the "UpdateUI" function to the OnItemChangedCallback Event/Delegate!
@@ -26,10 +34,21 @@ public class InventoryUI : MonoBehaviour
         //Opens/Closes the inventory if the player press the "Inventory" button
         //LATER THE PLAYER CAN ONLY OPEN THE INVENTORY IN THE NEAR OF THE BOAT
         //(THE INVENTORY IS THE INVENTORY OF THE BOAT)
+
+
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             playerMovement.canMove(!inventoryUI.activeSelf);
+
+            if(inventoryUI.activeSelf)
+            {
+                OnInventoryOpenCallback.Invoke();
+            }
+            else
+            {
+                OnInventoryCloseCallback.Invoke();
+            }
 
         }
     }

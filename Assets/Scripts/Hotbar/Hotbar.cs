@@ -10,7 +10,11 @@ public class Hotbar : MonoBehaviour
     public Item secondItem;
     public Item thirdItem;
 
+    [Space]
+    [Header("Need Componets:")]
     [SerializeField] HotbarUI hotbarUI;
+    [SerializeField] Inventory inventory;
+
     private Item temporaryItem;
 
     private void Update()
@@ -39,9 +43,41 @@ public class Hotbar : MonoBehaviour
     }
 
 
+    #region ButtonFunctions (DO NOT OPEN, CODE IS TERRIBLE)
+    public void MainButton()
+    {
+        if (activeItem)
+        {
+            if(inventory.AddItem(activeItem)) { activeItem = null; }
+            hotbarUI.UpdateHotbar();
+        }
+    }
+
+    public void SecondButton()
+    {
+        if (secondItem)
+        {
+            if (inventory.AddItem(secondItem)) { secondItem = null; }
+            hotbarUI.UpdateHotbar();
+        }
+    }
+
+    public void ThirdButton()
+    {
+        if (thirdItem)
+        {
+            if (inventory.AddItem(thirdItem)) { thirdItem = null; }
+            hotbarUI.UpdateHotbar();
+        }
+    }
+
+
+
+    #endregion
+
     public bool AddItem(Item item)
     {
-        Debug.Log("Tred to add an item to the hotbar!");
+        Debug.Log("Tried to add an item to the hotbar!");
         if (!activeItem)
         {
             activeItem = item;

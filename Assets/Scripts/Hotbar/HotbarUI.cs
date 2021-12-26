@@ -7,15 +7,44 @@ public class HotbarUI : MonoBehaviour
 {
     [SerializeField] Hotbar hotbar;
 
+    [SerializeField] InventoryUI inventoryUI;
+
     [SerializeField] Image activeItemIcon;
     [SerializeField] Image secondItemIcon;
     [SerializeField] Image thirdItemIcon;
+
+    [SerializeField] Button[] buttons;
+
+    private void Awake()
+    {
+        inventoryUI.OnInventoryOpenCallback += ActivateButtons;
+        inventoryUI.OnInventoryCloseCallback += DeactivateButtons;
+    }
+
 
 
     private void Start()
     {
         UpdateHotbar();
     }
+
+
+    private void ActivateButtons()
+    {
+        foreach (Button button in buttons)
+        {
+            button.enabled = true;
+        }
+    }
+
+    private void DeactivateButtons()
+    {
+        foreach (Button button in buttons)
+        {
+            button.enabled = false;
+        }
+    }
+
 
 
     public void UpdateHotbar()
