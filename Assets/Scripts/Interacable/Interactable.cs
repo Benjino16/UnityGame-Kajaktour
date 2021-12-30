@@ -5,7 +5,7 @@ public class Interactable : MonoBehaviour
     public bool inInteractionRange;
     public virtual void Update()
     {
-        if(Input.GetButtonDown("Action1") && inInteractionRange) {
+        if(Input.GetButtonDown("Interact") && inInteractionRange) {
             Interact();
         }
     }

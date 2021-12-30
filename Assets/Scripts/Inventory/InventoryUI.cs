@@ -9,9 +9,9 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] Inventory inventory;
     [SerializeField] Hotbar hotbar;
+    [SerializeField] GameManager gameManager;
 
     InventorySlot[] slots;
-
 
 
     public delegate void OnInventoryOpen();
@@ -39,7 +39,8 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
-            playerMovement.canMove(!inventoryUI.activeSelf);
+            gameManager.menuOpen = inventoryUI.activeSelf;
+            playerMovement.ActivateMovement(!inventoryUI.activeSelf);
 
             if(inventoryUI.activeSelf)
             {

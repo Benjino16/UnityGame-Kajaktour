@@ -1,7 +1,6 @@
 using UnityEngine;
 
 
-
 public enum ItemType
 {
     Food,
@@ -15,5 +14,7 @@ public class Item : ScriptableObject
     [Header("General Settings:")]
     new public string name = "New Item";
     public Sprite icon = null;
-    public ItemType itemType;
+    public ItemType type;
+
+    
 }

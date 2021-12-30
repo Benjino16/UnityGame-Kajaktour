@@ -26,11 +26,11 @@ public class BoatEnterExit : Interactable
 
     public override void Update()
     {
-        if (Input.GetButtonDown("Action1") && inInteractionRange && !playerStats.inBoat)
+        if (Input.GetButtonDown("Interact") && inInteractionRange && !playerStats.inBoat)
         {
             Interact();
         }
-        else if (Input.GetButtonDown("Action1") && playerStats.inBoat)
+        else if (Input.GetButtonDown("Interact") && playerStats.inBoat)
         {
             if (BoatExit())
             {

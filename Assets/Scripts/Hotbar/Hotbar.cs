@@ -19,10 +19,9 @@ public class Hotbar : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Hotbar1"))
+        if (Input.GetButtonDown("Action1") && activeItem)
         {
-            //Main Action
-            Debug.Log("Using Main Item");
+            //Use Main Item
         }
         if (Input.GetButtonDown("Hotbar2"))
         {

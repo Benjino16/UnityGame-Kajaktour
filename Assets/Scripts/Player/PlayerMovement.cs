@@ -5,24 +5,34 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] public bool movementActive = true;
 
-
+    [Header("Movement Settings")]
     [SerializeField] float movementSpeed = 10;
-    [SerializeField] Animator animator;
+    [SerializeField] float energyDrain = -1;
 
-    [Header("Interacteble Transform")]
+    [Space] [Header("Interacteble Transform")]
     [SerializeField] Transform interacebleArea;
     [SerializeField] float interactebleRangeTransform = 1f;
 
+
+    [Space]
+    [Header("Other needed Components")]
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] Animator animator;
+
+    [System.NonSerialized]
+
+    public bool movementActive = true;
 
     Vector2 movement;
     Rigidbody2D rigedbody;
     Vector2 lastPosition;
 
+
     private void Awake()
     {
         rigedbody = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
     }
     void Update()
     {
@@ -42,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rigedbody.MovePosition(rigedbody.position + movement.normalized * movementSpeed * Time.fixedDeltaTime);
+        if(movement.sqrMagnitude != 0)
+        {
+            playerStats.ModifyEnergy(energyDrain);
+        }
     }
 
     private void RunAnimation()
@@ -74,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void canMove(bool status)
+    public void ActivateMovement(bool status)
     {
         movementActive = status;
         if (!status)

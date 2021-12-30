@@ -9,6 +9,6 @@ public class FoodItem : Item
     public float energyRestore;
     public void Awake()
     {
-        itemType = ItemType.Food;
+        type = ItemType.Food;
     }
 }

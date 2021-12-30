@@ -12,7 +12,7 @@ public class BoatMovement : MonoBehaviour
     [SerializeField] private float liniearDrag = 1f;
 
     [Header("Other Components:")]
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rigedbody;
     [SerializeField] private PlayerStats playerStats;
     
 
@@ -21,7 +21,7 @@ public class BoatMovement : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigedbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -32,7 +32,7 @@ public class BoatMovement : MonoBehaviour
         #endregion
 
         //Calculate and sets the liniearDrag of the rb componet for the boat, depending on the rotation
-        rb.drag =  liniearDrag * (-Mathf.Abs((Vector2.Angle(rb.velocity, transform.up) - 90) / 90) + 1);
+        rigedbody.drag =  liniearDrag * (-Mathf.Abs((Vector2.Angle(rigedbody.velocity, transform.up) - 90) / 90) + 1);
     }
 
     private void FixedUpdate()
@@ -41,12 +41,12 @@ public class BoatMovement : MonoBehaviour
         {
 
 
-            rb.AddTorque(turnSpeed * boatMovement.x * Time.fixedDeltaTime * -1);
-            rb.AddForce(transform.up * boatSpeed * Time.fixedDeltaTime * boatMovement.y);
+            rigedbody.AddTorque(turnSpeed * boatMovement.x * Time.fixedDeltaTime * -1);
+            rigedbody.AddForce(transform.up * boatSpeed * Time.fixedDeltaTime * boatMovement.y);
 
 
             // Adds the force to the boat, that its not instantly loose his speed
-            rb.AddForce(Vector2.Reflect(rb.velocity * -1, transform.up) * keepSpeed);
+            rigedbody.AddForce(Vector2.Reflect(rigedbody.velocity * -1, transform.up) * keepSpeed);
         }
     }
 }

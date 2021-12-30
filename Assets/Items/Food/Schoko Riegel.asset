@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6b98a1794f2dca4eb00013d654ef76a, type: 3}
-  m_Name: Annanas
+  m_Name: Schoko Riegel
   m_EditorClassIdentifier: 
-  name: Annanas
-  icon: {fileID: 21300000, guid: 9e03ad17d5f4b7b48833e9f104462724, type: 3}
+  name: Schoko Riegel
+  icon: {fileID: 21300000, guid: 6e2306e5de2802044981b8388bf64d69, type: 3}
   itemType: 0
-  energyRestore: 50
+  energyRestore: 5
