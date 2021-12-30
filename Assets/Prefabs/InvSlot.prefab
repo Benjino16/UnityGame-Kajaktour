@@ -150,6 +150,7 @@ MonoBehaviour:
   hotbar: {fileID: 0}
   inventory: {fileID: 0}
   icon: {fileID: 2078764654639057813}
+  button: {fileID: 366147886662092314}
 --- !u!1 &3183812079933664109
 GameObject:
   m_ObjectHideFlags: 0

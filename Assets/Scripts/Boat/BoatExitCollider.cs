@@ -12,7 +12,7 @@ public class BoatExitCollider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         colliders.Add(collision);
-        exitPoint = true;
+        exitPoint = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -20,7 +20,7 @@ public class BoatExitCollider : MonoBehaviour
         colliders.Remove(collision);
         if (colliders.Count == 0)
         {
-            exitPoint = false;
+            exitPoint = true;
         }
     }
 }

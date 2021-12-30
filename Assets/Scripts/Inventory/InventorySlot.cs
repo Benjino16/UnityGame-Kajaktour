@@ -7,7 +7,9 @@ public class InventorySlot : MonoBehaviour
 {
     [SerializeField] Hotbar hotbar;
     [SerializeField] Inventory inventory;
-    public Image icon;
+    [SerializeField] Image icon;
+    [SerializeField] Button button;
+
     Item item;
     
 
@@ -17,6 +19,7 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = newItem.icon;
         icon.enabled = true;
+        button.enabled = true;
     }
 
     public void ClearSlot()
@@ -25,6 +28,7 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
+        button.enabled = false;
     }
 
 
