@@ -6,8 +6,7 @@ public class GameTime : MonoBehaviour
 {
     [SerializeField]  public int time;
     [SerializeField]  public int dayTime;
-
-    [SerializeField] private int dayLength;
+    [SerializeField]  private int dayLength = 20000;
 
 
     private void FixedUpdate()

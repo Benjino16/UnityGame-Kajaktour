@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class BoatExitCollider : MonoBehaviour
 {
-    private List<Collider2D> colliders = new List<Collider2D>();
+    private List<Collider2D> colliders = new();
     public bool exitPoint;
-
-
+    private readonly Quaternion normalRotation = new() { z = 90 };
+    
+    private void Update()
+    {
+        transform.rotation = normalRotation;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
