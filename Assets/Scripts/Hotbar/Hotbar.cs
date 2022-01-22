@@ -14,6 +14,7 @@ public class Hotbar : MonoBehaviour
     [Header("Need Componets:")]
     [SerializeField] HotbarUI hotbarUI;
     [SerializeField] Inventory inventory;
+    [SerializeField] PlayerStats playerStats;
 
     private Item temporaryItem;
 
@@ -21,7 +22,7 @@ public class Hotbar : MonoBehaviour
     {
         if (Input.GetButtonDown("Action1") && activeItem)
         {
-            //Use Main Item
+            if(activeItem.Use(playerStats)) { activeItem = null; hotbarUI.UpdateHotbar(); }
         }
         if (Input.GetButtonDown("Hotbar2"))
         {

@@ -5,10 +5,14 @@ using UnityEngine;
 public class BoatMovement : MonoBehaviour
 {
 
-    [Header("Boat Settings:")]
+    [SerializeField] private float energyDrain = 1f;
+
+    [Header("Movement Settings:")]
     [SerializeField] private float boatSpeed = 15f;
     [SerializeField] private float turnSpeed = 50f;
     [SerializeField] private float keepSpeed = 0.02f;
+
+    [Space]
     [Header("Drag Settings:")]
     [SerializeField] private float liniearDrag = 1f;
     [SerializeField] private float angularDrag = 3f;
@@ -41,10 +45,12 @@ public class BoatMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerStats.inBoat)
+        if (playerStats.inBoat && playerStats.energy >  0)
         {
+            //Remove players energy based on the players input
+            playerStats.ModifyEnergy(-(boatMovement.sqrMagnitude * energyDrain));
 
-
+            //Apply the boat movement speed, based on the input
             rigedbody.AddTorque(turnSpeed * boatMovement.x * Time.fixedDeltaTime * -1);
             rigedbody.AddForce(transform.up * boatSpeed * Time.fixedDeltaTime * boatMovement.y);
 
@@ -60,6 +66,10 @@ public class BoatMovement : MonoBehaviour
         rigedbody.drag = liniearDrag * (-Mathf.Abs((Vector2.Angle(rigedbody.velocity, transform.up) - 90) / 90) + 1);
     }
 
+
+
+    //Normaly this should change the boat turn rate based on the speed
+    //But its not working :)))
     private void SetAngularDrag()
     {
         rigedbody.angularDrag = 100 - (angularDrag * rigedbody.velocity.sqrMagnitude);

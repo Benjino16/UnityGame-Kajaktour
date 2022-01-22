@@ -11,4 +11,10 @@ public class FoodItem : Item
     {
         type = ItemType.Food;
     }
+
+    public override bool Use(PlayerStats playerStats)
+    {
+        playerStats.ModifyEnergy(energyRestore);
+        return true;
+    }
 }

@@ -136056,6 +136056,8 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 13235
     m_Data: {fileID: 11400000, guid: 49eeeebbf05af6449b89daa1be90667a, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 65
     m_Data: {fileID: -220899176, guid: 29f932267216ea04f827b94d6a1af5c5, type: 3}
@@ -138354,6 +138356,7 @@ MonoBehaviour:
   thirdItem: {fileID: 0}
   hotbarUI: {fileID: 401357639}
   inventory: {fileID: 1452387377}
+  playerStats: {fileID: 1167799274}
 --- !u!114 &1167799274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139095,6 +139098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d490e68b315a0248a3d29f7bf1a9de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energyDrain: 0.0001
   boatSpeed: 15
   turnSpeed: 30
   keepSpeed: 0.00005
