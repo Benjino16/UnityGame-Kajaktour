@@ -18,28 +18,30 @@ public class Hotbar : MonoBehaviour
 
     private Item temporaryItem;
 
-    private void Update()
+    public void UseItem()
     {
-        if (Input.GetButtonDown("Action1") && activeItem)
+        if(activeItem)
         {
-            if(activeItem.Use(playerStats)) { activeItem = null; hotbarUI.UpdateHotbar(); }
+            if (activeItem.Use(playerStats)) { activeItem = null; hotbarUI.UpdateHotbar(); }
         }
-        if (Input.GetButtonDown("Hotbar2"))
-        {
-            temporaryItem = activeItem;
-            activeItem = secondItem;
-            secondItem = temporaryItem;
+    }
 
-            hotbarUI.UpdateHotbar();
-        }
-        if (Input.GetButtonDown("Hotbar3"))
-        {
-            temporaryItem = activeItem;
-            activeItem = thirdItem;
-            thirdItem = temporaryItem;
+    public void SwitchHotbar2()
+    {
+        temporaryItem = activeItem;
+        activeItem = secondItem;
+        secondItem = temporaryItem;
 
-            hotbarUI.UpdateHotbar();
-        }
+        hotbarUI.UpdateHotbar();
+    }
+
+    public void SwitchHotbar3()
+    {
+        temporaryItem = activeItem;
+        activeItem = thirdItem;
+        thirdItem = temporaryItem;
+
+        hotbarUI.UpdateHotbar();
     }
 
 

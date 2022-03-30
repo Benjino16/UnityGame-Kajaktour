@@ -12,7 +12,10 @@ public class InventorySlot : MonoBehaviour
 
     Item item;
     
-
+    /// <summary>
+    /// Adds an item to the specific inventory slot
+    /// </summary>
+    /// <param name="newItem">The item thats </param>
     public void AddItem(Item newItem)
     {
         item = newItem;
@@ -22,6 +25,9 @@ public class InventorySlot : MonoBehaviour
         button.enabled = true;
     }
 
+    /// <summary>
+    /// Clears an inventory slot and deletes the item
+    /// </summary>
     public void ClearSlot()
     {
         item = null;
@@ -32,7 +38,7 @@ public class InventorySlot : MonoBehaviour
     }
 
 
-    public void inventoryItemClick()
+    public void InventoryClickItem()
     {
         if(item != null)
         {

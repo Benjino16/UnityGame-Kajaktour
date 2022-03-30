@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BoatMovement : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class BoatMovement : MonoBehaviour
     [Header("Other Components:")]
     [SerializeField] private Rigidbody2D rigedbody;
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private InputMaster inputMaster;
     
 
     private Vector2 boatMovement;
+
 
 
     private void Awake()
@@ -40,7 +43,9 @@ public class BoatMovement : MonoBehaviour
         #endregion
 
         SetLinearDrag();
-        //SetAngularDrag();
+        SetAngularDrag();
+        /*The angular drag depending on the boat speed,
+            the faster the boat the less angular drag is applied*/
     }
 
     private void FixedUpdate()
@@ -50,7 +55,7 @@ public class BoatMovement : MonoBehaviour
             //Remove players energy based on the players input
             playerStats.ModifyEnergy(-(boatMovement.sqrMagnitude * energyDrain));
 
-            //Apply the boat movement speed, based on the input
+            //Apply boat movement speed based on the input
             rigedbody.AddTorque(turnSpeed * boatMovement.x * Time.fixedDeltaTime * -1);
             rigedbody.AddForce(transform.up * boatSpeed * Time.fixedDeltaTime * boatMovement.y);
 
@@ -72,7 +77,7 @@ public class BoatMovement : MonoBehaviour
     //But its not working :)))
     private void SetAngularDrag()
     {
-        rigedbody.angularDrag = 100 - (angularDrag * rigedbody.velocity.sqrMagnitude);
+        rigedbody.angularDrag = -rigedbody.velocity.sqrMagnitude + 1;
         if(rigedbody.angularDrag < minAngDrag) { rigedbody.angularDrag = 0.5f; }
     }
 }

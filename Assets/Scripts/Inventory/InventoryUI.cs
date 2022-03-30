@@ -40,7 +40,7 @@ public class InventoryUI : MonoBehaviour
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             gameManager.menuOpen = inventoryUI.activeSelf;
-            playerMovement.ActivateMovement(!inventoryUI.activeSelf);
+            playerMovement.EnableMovementInput(!inventoryUI.activeSelf);
 
             if(inventoryUI.activeSelf)
             {

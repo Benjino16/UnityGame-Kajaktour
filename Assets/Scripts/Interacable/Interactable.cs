@@ -5,7 +5,8 @@ public class Interactable : MonoBehaviour
     public bool inInteractionRange;
     public virtual void Update()
     {
-        if(Input.GetButtonDown("Interact") && inInteractionRange) {
+        if(Input.GetButtonDown("Interact") && inInteractionRange) 
+        {
             Interact();
         }
     }
@@ -17,6 +18,7 @@ public class Interactable : MonoBehaviour
             inInteractionRange = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("InteractionRange"))
@@ -28,5 +30,6 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         print("Player interacting with " + gameObject.name);
+
     }
 }

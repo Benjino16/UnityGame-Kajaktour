@@ -87,11 +87,14 @@ public class PlayerMovement : MonoBehaviour
         interacebleArea.transform.position = lastPosition * interactebleRangeTransform + rigedbody.position; //MUSS NOCHMAL ÜBERARBEITET WERDEN (VARIABLEN ZUM ANPASSEN ERSTELLEN)
     }
 
-
-    public void ActivateMovement(bool status)
+    /// <summary>
+    /// Enables or disables the player's movement input. The player can still be pushed by other objects.
+    /// </summary>
+    /// <param name="enabled">Enable or disable movement input</param>
+    public void EnableMovementInput(bool enabled)
     {
-        movementActive = status;
-        if (!status)
+        movementActive = enabled;
+        if (!enabled)
         {
             movement.Set(0, 0);
             animator.SetFloat("Speed", 0);
